@@ -119,4 +119,3 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 });
-view rawApp.js hosted with ❤ by GitHub
