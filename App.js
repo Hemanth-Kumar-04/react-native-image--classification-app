@@ -1,4 +1,4 @@
-
+import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 import React, {Fragment, Component} from 'react';
 import {
   SafeAreaView,
@@ -19,9 +19,46 @@ export default class App extends Component {
     };
   }
 
-  chooseImage = () => {};
+  chooseImage = () => {
+    let options = {
+      title: 'Select Image',
+      storageOptions: {
+        skipBackup: true,
+        path: 'images',
+      },
+    };
+    launchImageLibrary(options, response => {
+      console.log('Response = ', response);
+      if (response.didCancel) {
+        console.log('User cancelled image picker');
+      } else {
+        console.log('response', JSON.stringify(response));
+        this.setState({
+          fileUri: response.assets[0].uri,
+        });
+      }
+    });
+  };
 
-  launchCamera = () => {};
+  launchCamera = () => {
+    let options = {
+      storageOptions: {
+        skipBackup: true,
+        path: 'images',
+      },
+    };
+    launchCamera(options, response => {
+      console.log('Response = ', response);
+      if (response.didCancel) {
+        console.log('User cancelled image picker');
+      } else {
+        console.log('response', JSON.stringify(response));
+        this.setState({
+          fileUri: response.assets[0].uri,
+        });
+      }
+    });
+  };
 
   renderFileUri() {
     if (this.state.fileUri) {
