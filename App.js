@@ -82,7 +82,7 @@ export default class App extends Component {
           <View style={styles.body}>
             <Text
               style={{textAlign: 'center', fontSize: 20, paddingBottom: 10}}>
-              Pick Images from Camera & Gallery
+              Pick Images from Camera&Gallery
             </Text>
             <View style={styles.ImageSections}>
               <View>{this.renderFileUri()}</View>
